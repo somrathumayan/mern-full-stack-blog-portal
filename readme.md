@@ -13,6 +13,7 @@ npx create-react-app .
 ### Install necessary dependencies for the frontend
 ```diff
 npm install react-router-dom react-toastify lucide-react
+npm run dev
 ```
 
 ### Navigate to your backend folder
