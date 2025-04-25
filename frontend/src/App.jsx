@@ -1,13 +1,17 @@
-import { useState } from 'react'
-import './App.css'
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+
+// Sample pages (you can replace them with your real components)
+import Home from "./Pages/Home";
+import Dashboard from "./Pages/DBHome";
 
 function App() {
-
   return (
-    <div className='bg-red-800'>
-      <h1>Humayan</h1>
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
