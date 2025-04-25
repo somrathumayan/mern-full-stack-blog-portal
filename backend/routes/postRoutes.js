@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const { createPost, getAllPosts, getPostById, getNewsPosts } = require("../controllers/postController");
+const filterByCategory = require("../middlewares/filterByCategory");
 
 // Setup Multer
 const storage = multer.diskStorage({
@@ -29,8 +30,12 @@ router.get("/:id", getPostById);
 router.post('/create', upload.single('image'), createPost);
 
 // Route to fetch posts with category 'News'
-router.get('/news', getNewsPosts);
+router.get("/news", getNewsPosts);
 
+// Example controller just sending the filtered posts
+router.get("/news", filterByCategory("News"), (req, res) => {
+  res.status(200).json(req.filteredPosts);
+});
 
 
 module.exports = router;

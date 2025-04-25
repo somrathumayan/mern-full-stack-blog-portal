@@ -2,9 +2,10 @@ const Post = require("../models/postModel");
 
 const createPost = async (req, res) => {
   try {
-    const { title, description1, description2, keywords, category, summary } = req.body;
+    const { title, description1, description2, keywords, category, summary } =
+      req.body;
 
-    const image = req.file?.path || "";  // Fetch the image path from the uploaded file
+    const image = req.file?.path || ""; // Fetch the image path from the uploaded file
 
     const newPost = new Post({
       title,
@@ -48,12 +49,11 @@ const getPostById = async (req, res) => {
 // Fetch all posts with category 'News'
 const getNewsPosts = async (req, res) => {
   try {
-    const newsPosts = await Post.find({ category: 'News' });
+    const newsPosts = await Post.find({ category: "News" });
     res.status(200).json(newsPosts);
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching news posts', error });
+    res.status(500).json({ message: "Error fetching news posts", error });
   }
 };
-
 
 module.exports = { createPost, getAllPosts, getPostById, getNewsPosts };

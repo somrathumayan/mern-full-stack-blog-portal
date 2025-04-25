@@ -11,15 +11,13 @@ import Sports from './Pages/Sports';
 import Jobs from './Pages/Jobs';
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
-// import NewsPostDetails from "./components/NewsPostDetails";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/post/:id" element={<PostDetails />} />
-      {/* <Route path="/news/:id" element={<NewsPostDetails />} /> */}
+      <Route path="/post/:id" element={<PostDetails />} />      
       <Route path="/news" element={<News />} />
       <Route path="/international" element={<International />} />
       <Route path="/sports" element={<Sports />} />

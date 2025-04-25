@@ -41,7 +41,9 @@ const upload = multer({ storage: storage });
 
 // Routes
 app.use("/api/posts", postRoutes); // Routes for handling posts
-app.use("/news", getNewsPosts); // Routes for handling posts
+// app.use("/api/posts", postRoutes);
+
+
 
 // MongoDB Connection
 mongoose
