@@ -7,8 +7,7 @@ export default function CreatePost() {
     title: "",
     description1: "",
     description2: "",
-    image1: null,
-    image2: null,
+    image: null,
     keywords: "",
     category: "",
     summary: "",
@@ -16,10 +15,10 @@ export default function CreatePost() {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if ((name === "image1" || name === "image2") && files.length > 0) {
-      setFormData({ ...formData, [name]: files[0] });
+    if (name === "image" && files.length > 0) {
+      setFormData((prev) => ({ ...prev, [name]: files[0] }));
     } else {
-      setFormData({ ...formData, [name]: value });
+      setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
 
@@ -30,8 +29,7 @@ export default function CreatePost() {
     data.append("title", formData.title);
     data.append("description1", formData.description1);
     data.append("description2", formData.description2);
-    data.append("image1", formData.image1);
-    data.append("image2", formData.image2);
+    if (formData.image) data.append("image", formData.image);
     data.append("keywords", formData.keywords);
     data.append("category", formData.category);
     data.append("summary", formData.summary);
@@ -50,8 +48,7 @@ export default function CreatePost() {
           title: "",
           description1: "",
           description2: "",
-          image1: null,
-          image2: null,
+          image: null,
           keywords: "",
           category: "",
           summary: "",
@@ -67,9 +64,7 @@ export default function CreatePost() {
 
   return (
     <div className="px-2 py-2">
-      <h2 className="text-xl sm:text-2xl font-semibold mb-4">
-        Create New Post
-      </h2>
+      <h2 className="text-xl sm:text-2xl font-semibold mb-4">Create New Post</h2>
 
       <form
         onSubmit={handleSubmit}
@@ -92,11 +87,11 @@ export default function CreatePost() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
             <label className="font-medium mb-1 text-sm sm:text-base">
-              Upload Image 1
+              Upload Image
             </label>
             <input
               type="file"
-              name="image1"
+              name="image"
               accept="image/*"
               onChange={handleChange}
               className="border p-2 rounded text-sm sm:text-base"
@@ -143,19 +138,6 @@ export default function CreatePost() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
             <label className="font-medium mb-1 text-sm sm:text-base">
-              Upload Image 2
-            </label>
-            <input
-              type="file"
-              name="image2"
-              accept="image/*"
-              onChange={handleChange}
-              className="border p-2 rounded text-sm sm:text-base"
-            />
-          </div>
-
-          <div className="flex flex-col">
-            <label className="font-medium mb-1 text-sm sm:text-base">
               Description 2
             </label>
             <textarea
@@ -182,9 +164,7 @@ export default function CreatePost() {
 
         {/* Keywords */}
         <div className="flex flex-col md:col-span-2">
-          <label className="font-medium mb-1 text-sm sm:text-base">
-            Keywords
-          </label>
+          <label className="font-medium mb-1 text-sm sm:text-base">Keywords</label>
           <textarea
             name="keywords"
             value={formData.keywords}
