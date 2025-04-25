@@ -1,20 +1,18 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import HomeBody from "../components/HomeBody";
+import Footer from "../components/Footer";
 
-const Home = () => {
-  
-
+const Sports = () => {
   return (
     <div>
       <Navbar />
 
-      <HomeBody/>
+      <HomeBody />
 
       <Footer />
     </div>
   );
 };
 
-export default Home;
+export default Sports;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import {
   FaFacebookF,
@@ -15,7 +16,6 @@ const Navbar = () => {
   const toggleMenu = () => setMobileMenuOpen((prev) => !prev);
   const toggleDropdown = () => setDropdownOpen((prev) => !prev);
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -30,79 +30,81 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className="bg-white shadow sticky top-0 z-50">
+    <header className="shadow sticky top-0 z-50" style={{background:"#101828"}}>
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <div className="text-xl font-bold text-blue-600">MyLogo</div>
+        <Link to="/" className="text-xl font-bold text-white">
+          MyLogo
+        </Link>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-6">
-          <a href="#" className="text-gray-700 hover:text-blue-600">
+          <Link to="/" className="text-white hover:text-blue-600">
             Home
-          </a>
+          </Link>
 
           <div className="relative">
             <button
               onClick={toggleDropdown}
-              className="dropdown-toggle flex items-center gap-1 text-gray-700 hover:text-blue-600"
+              className="dropdown-toggle flex items-center gap-1 text-white"
             >
               Category <ChevronDown size={16} />
             </button>
             {dropdownOpen && (
-              <div className="dropdown-menu absolute top-8 left-0 bg-white shadow-lg rounded w-48 py-2 z-50">
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+              <div className="dropdown-menu absolute top-8 left-0 bg-gray-700 shadow-lg rounded w-48 py-2 z-50">
+                <Link
+                  to="/news"
+                  className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black"
                 >
                   News
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                </Link>
+                <Link
+                  to="/international"
+                  className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black"
                 >
                   International
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                </Link>
+                <Link
+                  to="/sports"
+                  className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black"
                 >
                   Sports
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                </Link>
+                <Link
+                  to="/jobs"
+                  className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black"
                 >
                   Jobs
-                </a>
+                </Link>
               </div>
             )}
           </div>
 
-          <a href="#" className="text-gray-700 hover:text-blue-600">
+          <Link to="/about" className="text-white hover:text-blue-600">
             About
-          </a>
-          <a href="#" className="text-gray-700 hover:text-blue-600">
+          </Link>
+          <Link to="/contact" className="text-white hover:text-blue-600">
             Contact
-          </a>
+          </Link>
         </nav>
 
         {/* Desktop Social Icons */}
         <div className="hidden md:flex items-center gap-3 text-gray-600">
-          <a href="#">
+          <Link to="#">
             <FaFacebookF size={18} />
-          </a>
-          <a href="#">
+          </Link>
+          <Link to="#">
             <FaInstagram size={18} />
-          </a>
-          <a href="#">
+          </Link>
+          <Link to="#">
             <FaYoutube size={18} />
-          </a>
-          <a href="#">
+          </Link>
+          <Link to="#">
             <FaTelegramPlane size={18} />
-          </a>
-          <a href="#">
+          </Link>
+          <Link to="#">
             <FaPhoneAlt size={18} />
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -114,9 +116,9 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-t px-4 py-3 space-y-2">
-          <a href="#" className="block text-gray-700">
+          <Link to="/" className="block text-gray-700">
             Home
-          </a>
+          </Link>
 
           {/* Dropdown */}
           <div className="space-y-1">
@@ -128,45 +130,45 @@ const Navbar = () => {
             </button>
             {dropdownOpen && (
               <div className="pl-4 space-y-1">
-                <a href="#" className="block text-gray-700">
+                <Link to="/news" className="block text-gray-700">
                   News
-                </a>
-                <a href="#" className="block text-gray-700">
+                </Link>
+                <Link to="/international" className="block text-gray-700">
                   International
-                </a>
-                <a href="#" className="block text-gray-700">
+                </Link>
+                <Link to="/sports" className="block text-gray-700">
                   Sports
-                </a>
-                <a href="#" className="block text-gray-700">
+                </Link>
+                <Link to="/jobs" className="block text-gray-700">
                   Jobs
-                </a>
+                </Link>
               </div>
             )}
           </div>
 
-          <a href="#" className="block text-gray-700">
+          <Link to="/about" className="block text-gray-700">
             About
-          </a>
-          <a href="#" className="block text-gray-700">
+          </Link>
+          <Link to="/contact" className="block text-gray-700">
             Contact
-          </a>
+          </Link>
 
           <div className="flex gap-3 pt-3 border-t text-gray-600">
-            <a href="#">
+            <Link to="#">
               <FaFacebookF size={18} />
-            </a>
-            <a href="#">
+            </Link>
+            <Link to="#">
               <FaInstagram size={18} />
-            </a>
-            <a href="#">
+            </Link>
+            <Link to="#">
               <FaYoutube size={18} />
-            </a>
-            <a href="#">
+            </Link>
+            <Link to="#">
               <FaTelegramPlane size={18} />
-            </a>
-            <a href="#">
+            </Link>
+            <Link to="#">
               <FaPhoneAlt size={18} />
-            </a>
+            </Link>
           </div>
         </div>
       )}

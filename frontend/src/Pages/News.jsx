@@ -1,20 +1,18 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import HomeBody from "../components/HomeBody";
+import NewsBody from './../components/NewsBody';
 
-const Home = () => {
-  
-
+const News = () => {
   return (
     <div>
       <Navbar />
 
-      <HomeBody/>
+      <NewsBody />
 
       <Footer />
     </div>
   );
 };
 
-export default Home;
+export default News;

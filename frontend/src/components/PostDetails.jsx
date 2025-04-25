@@ -40,36 +40,63 @@ const PostDetails = () => {
     <div>
       <Navbar />
       <div className="max-w-5xl mx-auto p-4">
-        {/* Post Container */}
         <div className="bg-white rounded-lg shadow-md border p-4">
-          {/* Image */}
+          {/* Post Cover Image */}
           <div className="overflow-hidden rounded-lg mb-4">
             <img
-              src={`http://localhost:5000/${post.image}`} // Use image1 from the database
+              src={`http://localhost:5000/${post.image.replace("\\", "/")}`}
               alt={post.title}
               className="w-full h-[400px] object-cover rounded-md"
             />
           </div>
 
           {/* Title */}
-          <h1 className="text-3xl font-bold mb-2">{post.title}</h1>
+          <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
 
           {/* Meta Info */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-gray-600 mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-gray-600 mb-6">
             <div className="flex items-center gap-2">
               <UserCog size={18} className="text-blue-600" />
-              <span className="font-medium">{post.author || "Admin"}</span>
+              <span className="font-medium">Admin</span>
             </div>
             <div className="flex items-center gap-2">
               <Clock size={18} className="text-gray-600" />
-              <span>{post.date || "Date not available"}</span>
+              <span>
+                {new Date(post.createdAt).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </span>
             </div>
           </div>
 
           {/* Content */}
-          <p className="text-lg text-gray-700 leading-relaxed whitespace-pre-line">
-            {post.content}
-          </p>
+          <div className="text-gray-800 text-lg leading-relaxed space-y-6">
+            <p>{post.description1}</p>
+            <p>{post.description2}</p>
+
+            {/* Additional image */}
+            <div className="rounded-lg overflow-hidden">
+              <img
+                src={`http://localhost:5000/${post.image.replace("\\", "/")}`}
+                alt="Additional"
+                className="w-full h-[300px] object-cover rounded-md"
+              />
+            </div>
+
+            {/* Keywords */}
+            <div>
+              <h3 className="text-xl font-semibold mt-6">Keywords</h3>
+              <p className="mt-2 text-gray-600">{post.keywords}</p>
+            </div>
+
+            {/* Summary */}
+            <div>
+              <h3 className="text-xl font-semibold mt-6">Summary</h3>
+              <p className="mt-2 text-gray-600">{post.summary}</p>
+            </div>
+          </div>
         </div>
       </div>
       <Footer />

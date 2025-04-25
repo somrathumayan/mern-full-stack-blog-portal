@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const { createPost, getAllPosts, getPostById } = require("../controllers/postController");
+const { createPost, getAllPosts, getPostById, getNewsPosts } = require("../controllers/postController");
 
 // Setup Multer
 const storage = multer.diskStorage({
@@ -23,5 +23,14 @@ router.post(
 
 router.get("/", getAllPosts);
 router.get("/:id", getPostById);
+
+
+// Route for creating a post
+router.post('/create', upload.single('image'), createPost);
+
+// Route to fetch posts with category 'News'
+router.get('/news', getNewsPosts);
+
+
 
 module.exports = router;

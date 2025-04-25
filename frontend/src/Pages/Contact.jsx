@@ -1,20 +1,15 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import HomeBody from "../components/HomeBody";
 
-const Home = () => {
-  
-
+const Contact = () => {
   return (
     <div>
       <Navbar />
-
-      <HomeBody/>
 
       <Footer />
     </div>
   );
 };
 
-export default Home;
+export default Contact;

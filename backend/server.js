@@ -6,6 +6,7 @@ const path = require("path");
 const fs = require("fs");
 const postRoutes = require("./routes/postRoutes");
 const multer = require("multer");
+const { getNewsPosts } = require("./controllers/postController");
 
 dotenv.config();
 const app = express();
@@ -40,6 +41,7 @@ const upload = multer({ storage: storage });
 
 // Routes
 app.use("/api/posts", postRoutes); // Routes for handling posts
+app.use("/news", getNewsPosts); // Routes for handling posts
 
 // MongoDB Connection
 mongoose

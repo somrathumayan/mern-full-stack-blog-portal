@@ -45,4 +45,15 @@ const getPostById = async (req, res) => {
   }
 };
 
-module.exports = { createPost, getAllPosts, getPostById };
+// Fetch all posts with category 'News'
+const getNewsPosts = async (req, res) => {
+  try {
+    const newsPosts = await Post.find({ category: 'News' });
+    res.status(200).json(newsPosts);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching news posts', error });
+  }
+};
+
+
+module.exports = { createPost, getAllPosts, getPostById, getNewsPosts };
